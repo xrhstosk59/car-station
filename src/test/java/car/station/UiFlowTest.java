@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Labeled;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
@@ -144,6 +145,43 @@ class UiFlowTest {
     }
 
     @Test
+    void customerProfileScreenLoadsUserData() throws Throwable {
+        UserIDSingleton.getInstance().setUser(3);
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("CustomerProfileSettings.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            assertEquals("Tomy", ((TextField) loader.getNamespace().get("name")).getText());
+            assertEquals("Tomy", ((TextField) loader.getNamespace().get("uname")).getText());
+            assertEquals("MacQueen", ((TextField) loader.getNamespace().get("lname")).getText());
+            assertEquals("Radiator Springs 66", ((TextField) loader.getNamespace().get("adress")).getText());
+            assertEquals("12345", ((TextField) loader.getNamespace().get("tk")).getText());
+            assertEquals("tomy@mcqueen.com", ((TextField) loader.getNamespace().get("mail")).getText());
+            assertEquals("", ((TextField) loader.getNamespace().get("phone")).getText());
+        });
+    }
+
+    @Test
+    void customerNotificationsLoadOnceWithoutDuplicates() throws Throwable {
+        UserIDSingleton.getInstance().setUser(3);
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("UserStart.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            UserStartController controller = loader.getController();
+            MenuButton bell = (MenuButton) loader.getNamespace().get("bell");
+
+            controller.handleNotifications(null);
+            assertEquals(1, bell.getItems().size());
+            assertEquals("Ληξιπρόθεσμος λογαριασμός", bell.getItems().get(0).getText());
+
+            controller.handleNotifications(null);
+            assertEquals(1, bell.getItems().size());
+        });
+    }
+
+    @Test
     void parkingReservationReducesAvailableSpots() throws Throwable {
         FxTestSupport.runOnFxThread(() -> {
             Stage stage = loadStage("Parking.fxml");
@@ -162,6 +200,23 @@ class UiFlowTest {
             ResultSet rs = statement.executeQuery();
             assertTrue(rs.next());
             assertEquals(19, rs.getInt("available"));
+        }
+    }
+
+    @Test
+    void parkingWithoutVehicleDoesNotChangeAvailability() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("Parking.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((Button) loader.getNamespace().get("confirm")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select available from parking where type='Ι.Χ'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(20, rs.getInt("available"));
         }
     }
 
@@ -189,6 +244,26 @@ class UiFlowTest {
             ResultSet rs = statement.executeQuery();
             assertTrue(rs.next());
             assertEquals(92.0, rs.getDouble("amount"));
+        }
+    }
+
+    @Test
+    void fuelOrderWithoutSelectionDoesNotChangeFuelStock() throws Throwable {
+        UserIDSingleton.getInstance().setUser(3);
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("Fuel.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((TextField) loader.getNamespace().get("lit")).setText("10");
+            ((Button) loader.getNamespace().get("accept")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from fuel where type='gas95'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(102.0, rs.getDouble("amount"));
         }
     }
 
