@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@cussabout.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="car.station.CussAboutController">
+  <content>
+    <AnchorPane layoutX="640.0" layoutY="480.0" minHeight="0.0" minWidth="0.0" prefHeight="1894.0" prefWidth="918.0" stylesheets="@cussabout.css">
+         <children>
+            <Button fx:id="start1" layoutX="-10.0" layoutY="4.0" onAction="#handleBack" prefHeight="33.0" prefWidth="45.0" textFill="WHITE">
+               <font>
+                  <Font name="DejaVu Serif Condensed" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="back" fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/customer/profileset/arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="195.0" fitWidth="294.0" layoutX="454.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/parking.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="319.0" fitWidth="424.0" layoutX="505.0" layoutY="1035.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/mentainance.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="297.0" fitWidth="400.0" layoutX="22.0" layoutY="749.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/acccus.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="298.0" fitWidth="399.0" layoutX="505.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/cusspass.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="270.0" fitWidth="392.0" layoutX="27.0" layoutY="1184.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/info.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="346.0" fitWidth="360.0" layoutX="14.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/cusssettings.png" />
+               </image>
+            </ImageView>
+            <Line endX="842.0" layoutX="91.0" layoutY="56.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
+            <Label layoutX="194.0" layoutY="368.0" prefHeight="30.0" prefWidth="139.0" styleClass="bb" text="Αλλαγή και &#10;αφαίρεση εικόνας προφίλ" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="4.0" layoutY="378.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="785.0" layoutY="520.0" prefHeight="30.0" prefWidth="120.0" styleClass="bb" text="Επεξεργασία κωδικού&#10;πρόσβασης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="244.0" layoutY="586.0" prefHeight="16.0" prefWidth="124.0" styleClass="bb" text="Αποθήκευση αλλαγών" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="581.0" prefHeight="17.0" prefWidth="90.0" styleClass="bb" text="Τα οχήματά σας" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="518.0" prefHeight="13.0" prefWidth="173.0" styleClass="bb" text="Στοιχεία λογαριασμού τραπέζης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="440.0" prefHeight="15.0" prefWidth="177.0" styleClass="bb" text="Επεξεργασία κωδικού πρόσβασης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="663.0" layoutY="735.0" prefHeight="16.0" prefWidth="124.0" styleClass="bb" text="Αποθήκευση αλλαγών" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="485.0" layoutY="750.0" prefHeight="17.0" prefWidth="90.0" styleClass="bb" text="Τα οχήματά σας" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="474.0" layoutY="687.0" prefHeight="13.0" prefWidth="173.0" styleClass="bb" text="Στοιχεία λογαριασμού τραπέζης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="432.0" prefHeight="17.0" prefWidth="131.0" styleClass="bb" text="Επεξεργασία στοιχείων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="412.0" layoutY="629.0" prefHeight="17.0" prefWidth="203.0" styleClass="bb" text="Επεξεργασία προσωπικών  στοιχείων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="457.0" layoutY="517.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="194.0" layoutY="971.0" prefHeight="16.0" prefWidth="124.0" styleClass="bb" text="Αποθήκευση αλλαγών" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="368.0" layoutY="845.0" prefHeight="17.0" prefWidth="131.0" styleClass="bb" text="Επεξεργασία στοιχείων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="741.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="75.0" layoutY="862.0" prefHeight="15.0" prefWidth="177.0" styleClass="bb" text="Επεξεργασία κωδικού πρόσβασης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="971.0" prefHeight="17.0" prefWidth="90.0" styleClass="bb" text="Τα οχήματά σας" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="913.0" prefHeight="17.0" prefWidth="203.0" styleClass="bb" text="Επεξεργασία προσωπικών  στοιχείων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="473.0" layoutY="1000.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="643.0" layoutY="1347.0" prefHeight="16.0" prefWidth="124.0" styleClass="bb" text="Αποθήκευση αλλαγών" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="522.0" layoutY="1143.0" prefHeight="33.0" prefWidth="147.0" styleClass="bb" text="Επεξεργασία ημερομηνίας&#10;και ώρας" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="1148.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="270.0" fitWidth="392.0" layoutX="295.0" layoutY="1502.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/vehicle.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="478.0" layoutY="1761.0" prefHeight="16.0" prefWidth="124.0" styleClass="bb" text="Αποθήκευση αλλαγών" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="598.0" layoutY="1603.0" prefHeight="17.0" prefWidth="131.0" styleClass="bb" text="Επεξεργασία στοιχείων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="302.0" layoutY="1511.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="293.0" layoutY="1652.0" prefHeight="15.0" prefWidth="177.0" styleClass="bb" text="Επεξεργασία κωδικού πρόσβασης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="1607.0" prefHeight="17.0" prefWidth="203.0" styleClass="bb" text="Επεξεργασία προσωπικών  στοιχείων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="291.0" layoutY="1691.0" prefHeight="0.0" prefWidth="141.0" styleClass="bb" text="Επεξεργασία λογαριασμού" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="298.0" fitWidth="333.0" layoutX="43.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/about/user/cusstart.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="290.0" layoutY="83.0" prefHeight="20.0" prefWidth="79.0" styleClass="bb" text="Ειδοποιήσεις" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="73.0" prefHeight="20.0" prefWidth="104.0" styleClass="bb" text="Ρυθμίσεις προφίλ" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="167.0" prefHeight="20.0" prefWidth="118.0" styleClass="bb" text="Επιλογές Στάθμευσης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="130.0" layoutY="223.0" prefHeight="20.0" prefWidth="179.0" styleClass="bb" text="Κλείστε ραντεβού για συντήρηση" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="136.0" layoutY="264.0" prefHeight="20.0" prefWidth="156.0" styleClass="bb" text="Πληροφορίες για τον σταθμό" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="430.0" layoutY="132.0" prefHeight="35.0" prefWidth="96.0" styleClass="bb" text="Επιστροφή στην &#10;αρχική οθόνη" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="429.0" layoutY="215.0" prefHeight="16.0" prefWidth="98.0" styleClass="bb" text="Επιλογή οχήματος" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="656.0" layoutY="203.0" prefHeight="16.0" prefWidth="98.0" styleClass="bb" text="Επιλογή πακέτου" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="535.0" layoutY="370.0" prefHeight="16.0" prefWidth="134.0" styleClass="bb" text="Επιβεβαίωση κράτησης" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="550.0" layoutY="179.0" prefHeight="16.0" prefWidth="130.0" styleClass="bb" text="Προβολή κενών θέσεων" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="10.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

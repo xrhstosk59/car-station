@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@maintenance.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="car.station.MaintenanceController">
+    <children>
+        <ImageView fitHeight="249.0" fitWidth="296.0" layoutX="24.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/mentainance/frame.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="back" layoutY="6.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="43.0" prefWidth="48.0">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/fuel/arrow.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <padding>
+                <Insets top="3.0" />
+            </padding>
+        </Button>
+        <Line endX="543.0" layoutX="97.0" layoutY="57.0" startX="-100.0" stroke="WHITE" />
+        <Label layoutX="256.0" layoutY="15.0" prefHeight="26.0" prefWidth="129.0" text="Συντήρηση" textFill="WHITE">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="68.0" layoutY="148.0" text="Κλείστε ραντεβού&#10;ηλεκτρονικά" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <DatePicker fx:id="datePicker" layoutX="80.0" layoutY="253.0" prefHeight="26.0" prefWidth="184.0" />
+        <Label layoutX="103.0" layoutY="226.0" text="Ημερομηνία" textAlignment="CENTER" textFill="#365c89">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="148.0" layoutY="278.0" text="Ώρα" textAlignment="CENTER" textFill="#365c89">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="275.0" fitWidth="296.0" layoutX="330.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/mentainance/frame.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="346.0" layoutY="148.0" text="Επικοινωνήστε με έναν&#10;υπάλληλο μας" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="360.0" layoutY="228.0" text="Τηλέφωνα:" textAlignment="CENTER" textFill="#365c89">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="413.0" layoutY="266.0" text="69 99 99 99 66" textAlignment="CENTER" textFill="#365c89">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="413.0" layoutY="304.0" text="69 66 66 66 99" textAlignment="CENTER" textFill="#365c89">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="22.0" />
+            </font>
+        </Label>
+        <HBox layoutX="90.0" layoutY="303.0" prefHeight="26.0" prefWidth="165.0">
+            <children>
+                <Spinner fx:id="hourSpinner" prefHeight="26.0" prefWidth="80.0">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="8" max="20" min="8" />
+                    </valueFactory> 
+                </Spinner>
+                <Label alignment="CENTER" prefHeight="24.0" prefWidth="0.0" text=":" textAlignment="CENTER" textFill="#365c89">
+                    <font>
+                        <Font name="DejaVu Serif Condensed" size="19.0" />
+                    </font>
+                </Label>
+                <Spinner fx:id="minuteSpinner" prefHeight="33.0" prefWidth="79.0"> 
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="0" max="59" min="0" />
+                    </valueFactory>
+                </Spinner> 
+            </children>
+        </HBox>
+      <Button fx:id="appoinment" layoutX="101.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleAppointment" text="Κλείστε Ραντεβού" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="12.0" />
+         </font></Button>
+    </children>
+</AnchorPane>

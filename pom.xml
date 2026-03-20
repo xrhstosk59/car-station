@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>kachowwwwww.car</groupId>
-    <artifactId>station</artifactId>
+    <groupId>car.station</groupId>
+    <artifactId>car-station</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Car Station</name>
 
@@ -45,15 +45,6 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>${project.basedir}/src</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -69,7 +60,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>kachowwwwww.car.station.KachowwwwwwCarStation</mainClass>
+                    <mainClass>car.station.CarStationApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
