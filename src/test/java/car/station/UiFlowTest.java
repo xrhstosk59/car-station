@@ -9,14 +9,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -137,6 +140,75 @@ class UiFlowTest {
             ResultSet rs = statement.executeQuery();
             assertTrue(rs.next());
             assertEquals(1, rs.getInt("count"));
+        }
+    }
+
+    @Test
+    void parkingReservationReducesAvailableSpots() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("Parking.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            ParkingController controller = loader.getController();
+
+            ComboBox<String> vehicles = (ComboBox<String>) loader.getNamespace().get("vehicles");
+            vehicles.setValue("Ι.Χ");
+            controller.handleVehicle(new ActionEvent(vehicles, vehicles));
+
+            ((Button) loader.getNamespace().get("confirm")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select available from parking where type='Ι.Χ'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(19, rs.getInt("available"));
+        }
+    }
+
+    @Test
+    void fuelOrderReducesFuelStock() throws Throwable {
+        UserIDSingleton.getInstance().setUser(3);
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("Fuel.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            FuelController controller = loader.getController();
+
+            RadioButton fuel = (RadioButton) loader.getNamespace().get("amosimp");
+            fuel.fire();
+
+            TextField liters = (TextField) loader.getNamespace().get("lit");
+            liters.setText("10");
+            controller.handleLit(new ActionEvent(liters, liters));
+
+            ((Button) loader.getNamespace().get("accept")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from fuel where type='gas95'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(92.0, rs.getDouble("amount"));
+        }
+    }
+
+    @Test
+    void adminFuelOrderIncreasesSelectedFuelOnly() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("FuelAdmin.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            TextField liters = (TextField) loader.getNamespace().get("amoSimpli");
+            liters.setText("10");
+
+            ((Button) loader.getNamespace().get("accept")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from fuel where type='gas95'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(112.0, rs.getDouble("amount"));
         }
     }
 

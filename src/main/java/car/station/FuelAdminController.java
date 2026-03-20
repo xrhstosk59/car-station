@@ -121,6 +121,9 @@ public class FuelAdminController implements Initializable {
             PreparedStatement statement = connection.prepareStatement("update fuel set amount=amount+? where type=?");
             for (int i = 0; i < litFields.length; i++) {
                 String text = litFields[i].getText();
+                if (text == null || text.trim().isEmpty()) {
+                    continue;
+                }
                 double oldLit = format.parse(amountTextFields[i].getText()).doubleValue();
                 double addedLit = format.parse(text).doubleValue();
                 if (oldLit + addedLit >= 400) {
@@ -130,12 +133,10 @@ public class FuelAdminController implements Initializable {
                     alert.show();
                     continue;
                 }
-                if (!text.trim().equals("")) {
-                    statement.setDouble(1, addedLit);
-                    statement.setString(2, litFields[i].getId());
-                    statement.execute();
-                    amountTextFields[i].setText(format.format(oldLit + addedLit));
-                }
+                statement.setDouble(1, addedLit);
+                statement.setString(2, litFields[i].getId());
+                statement.execute();
+                amountTextFields[i].setText(format.format(oldLit + addedLit));
             }
 
         } catch (SQLException ex) {

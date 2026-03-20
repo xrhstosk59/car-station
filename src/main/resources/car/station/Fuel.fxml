@@ -44,7 +44,7 @@
                 </Button>
               
                 
-                <RadioButton fx:id="diesel" text="Πετρέλαιο" textFill="WHITE" toggleGroup="$fuelType">
+                <RadioButton id="diesel" fx:id="diesel" text="Πετρέλαιο" textFill="WHITE" toggleGroup="$fuelType">
                     <font>
                         <Font name="DejaVu Serif Condensed Bold" size="20.0" />
                     </font>
