@@ -222,7 +222,7 @@
                                                 <Image url="@assets/parts/partbg.png" />
                                             </image>
                                         </ImageView>
-                                        <TextField fx:id="Στροφαλοφόροι" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Στροφαλοφόροι" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                        <TextField fx:id="Στροφαλοφόρος" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Στροφαλοφόρος" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
                                  <font>
                                     <Font size="9.0" />
                                  </font></TextField>

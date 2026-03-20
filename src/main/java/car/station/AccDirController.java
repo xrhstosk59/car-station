@@ -50,7 +50,7 @@ public class AccDirController implements Initializable {
 
     @FXML
     public void handleAccountType(ActionEvent event) throws URISyntaxException, IOException {
-        if (accounts.getValue().equals("Πελάτες")) {
+        if ("Πελάτες".equals(accounts.getValue())) {
             vehicles.setVisible(true);
         } else {
             vehicles.setVisible(false);
@@ -59,7 +59,7 @@ public class AccDirController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        vehicles.setVisible(false);
     }
 
 }

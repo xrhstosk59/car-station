@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,8 +38,8 @@ import javafx.stage.Stage;
  */
 public class MecPartStaffController implements Initializable {
 
-    public HashMap<String, Integer> currentParts = new HashMap();
-    public HashMap<String, Double> currentPrices = new HashMap();
+    public HashMap<String, Integer> currentParts = new HashMap<>();
+    public HashMap<String, Double> currentPrices = new HashMap<>();
     DecimalFormat format = new DecimalFormat("0");
     Connection connection;
     @FXML
@@ -57,27 +58,68 @@ public class MecPartStaffController implements Initializable {
     @FXML
     public void addtoMecOrder(ActionEvent event) {
         TextField textfield = ((TextField) event.getSource());
+        String partType = resolvePartType(textfield.getId());
         String currentText = textfield.getText().trim();
+
+        if (!currentPrices.containsKey(partType)) {
+            currentParts.remove(partType);
+            updateTotalPrice();
+            return;
+        }
+
         try {
-            currentParts.put(textfield.getId(), Integer.valueOf(currentText));
+            int quantity = Integer.parseInt(currentText);
+            if (quantity <= 0) {
+                currentParts.remove(partType);
+            } else {
+                currentParts.put(partType, quantity);
+            }
         } catch (NumberFormatException e) {
-            currentParts.remove(textfield.getId());
+            currentParts.remove(partType);
         }
-        Double totalPrice = 0d;
-        for (Map.Entry<String, Integer> part : currentParts.entrySet()) {
-            totalPrice += currentPrices.get(part.getKey());
-        }
-        price.setText(format.format(totalPrice));
+
+        updateTotalPrice();
     }
 
     @FXML
     public void handleOrder(ActionEvent event) throws SQLException {
         for (Map.Entry<String, Integer> part : currentParts.entrySet()) {
-            PreparedStatement partsStatement = connection.prepareStatement("update parts set amount=amount-? where type=?");
-            partsStatement.setInt(1, part.getValue());
-            partsStatement.setString(2, part.getKey());
-            partsStatement.execute();
+            try (PreparedStatement partsStatement = connection.prepareStatement(
+                    "update parts set amount=amount-? where type=? and amount>=?")) {
+                partsStatement.setInt(1, part.getValue());
+                partsStatement.setString(2, part.getKey());
+                partsStatement.setInt(3, part.getValue());
+                if (partsStatement.executeUpdate() == 0) {
+                    showAlert(Alert.AlertType.ERROR, "Προσοχή", "Δεν υπάρχει επαρκές απόθεμα για: " + part.getKey());
+                }
+            }
         }
+    }
+
+    private void updateTotalPrice() {
+        double totalPrice = 0d;
+        for (Map.Entry<String, Integer> part : currentParts.entrySet()) {
+            Double unitPrice = currentPrices.get(part.getKey());
+            if (unitPrice != null) {
+                totalPrice += unitPrice * part.getValue();
+            }
+        }
+        price.setText(totalPrice > 0 ? format.format(totalPrice) : "");
+    }
+
+    private String resolvePartType(String partId) {
+        if ("Στροφαλοφόροι".equals(partId)) {
+            return "Στροφαλοφόρος";
+        }
+        return partId;
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.show();
     }
 
     @Override

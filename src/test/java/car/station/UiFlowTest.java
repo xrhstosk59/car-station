@@ -1,6 +1,7 @@
 package car.station;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -377,6 +378,118 @@ class UiFlowTest {
             assertTrue(rs.next());
             assertEquals(161.0, rs.getDouble("amount"));
         }
+    }
+
+    @Test
+    void accountDirectoryShowsVehiclesOnlyForCustomers() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("AccDir.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            AccDirController controller = loader.getController();
+
+            ComboBox<String> accounts = (ComboBox<String>) loader.getNamespace().get("accounts");
+            Button vehicles = (Button) loader.getNamespace().get("vehicles");
+            assertFalse(vehicles.isVisible());
+
+            accounts.setValue("Πελάτες");
+            controller.handleAccountType(new ActionEvent(accounts, accounts));
+            assertTrue(vehicles.isVisible());
+
+            accounts.setValue("Υπάλληλοι");
+            controller.handleAccountType(new ActionEvent(accounts, accounts));
+            assertFalse(vehicles.isVisible());
+        });
+    }
+
+    @Test
+    void adminPartsOrderUsesQuantityPricingAndUpdatesCrankshaftStock() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("MecPart.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            MecPartController controller = loader.getController();
+
+            TextField crankshaft = (TextField) loader.getNamespace().get("Στροφαλοφόρος");
+            crankshaft.setText("2");
+            controller.addtoMecOrder(new ActionEvent(crankshaft, crankshaft));
+
+            assertEquals("80", ((TextField) loader.getNamespace().get("price")).getText());
+
+            ((Button) loader.getNamespace().get("confirm11")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from parts where type='Στροφαλοφόρος'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(6, rs.getInt("amount"));
+        }
+    }
+
+    @Test
+    void staffPartsOrderUsesQuantityPricingAndReducesStock() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("MecPartStaff.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            MecPartStaffController controller = loader.getController();
+
+            TextField airFilter = (TextField) loader.getNamespace().get("Αέρος");
+            airFilter.setText("2");
+            controller.addtoMecOrder(new ActionEvent(airFilter, airFilter));
+
+            assertEquals("200", ((TextField) loader.getNamespace().get("price")).getText());
+
+            ((Button) loader.getNamespace().get("confirm11")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from parts where type='Αέρος'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(8, rs.getInt("amount"));
+        }
+    }
+
+    @Test
+    void staffPartsOrderWithInsufficientStockDoesNotGoNegative() throws Throwable {
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement update = connection.prepareStatement("update parts set amount=1 where type='Αέρος'")) {
+            update.executeUpdate();
+        }
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("MecPartStaff.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            MecPartStaffController controller = loader.getController();
+
+            TextField airFilter = (TextField) loader.getNamespace().get("Αέρος");
+            airFilter.setText("2");
+            controller.addtoMecOrder(new ActionEvent(airFilter, airFilter));
+
+            ((Button) loader.getNamespace().get("confirm11")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from parts where type='Αέρος'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(1, rs.getInt("amount"));
+        }
+    }
+
+    @Test
+    void unknownPartFieldDoesNotPolluteOrders() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("MecPart.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            MecPartController controller = loader.getController();
+
+            TextField timingBelt = (TextField) loader.getNamespace().get("Ιμάντας");
+            timingBelt.setText("1");
+            controller.addtoMecOrder(new ActionEvent(timingBelt, timingBelt));
+
+            assertTrue(controller.currentParts.isEmpty());
+            assertEquals("", ((TextField) loader.getNamespace().get("price")).getText());
+        });
     }
 
     private Stage loadStage(String fxmlFile) throws Exception {
