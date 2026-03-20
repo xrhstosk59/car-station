@@ -138,7 +138,7 @@ public class FuelController implements Initializable {
             return "Login.fxml";
         }
 
-        try (Connection roleConnection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+        try (Connection roleConnection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
              PreparedStatement statement = roleConnection.prepareStatement("select role from users where rowid=?")) {
             statement.setInt(1, userId);
             ResultSet rs = statement.executeQuery();
@@ -174,7 +174,7 @@ public class FuelController implements Initializable {
         format.setRoundingMode(RoundingMode.DOWN);
         format.setMaximumFractionDigits(2);
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
             Statement price_statement = connection.createStatement();
             ResultSet prices = price_statement.executeQuery("select type,retail_price from fuel");
             while (prices.next()) {

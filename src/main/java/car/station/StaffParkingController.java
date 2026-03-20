@@ -49,7 +49,7 @@ public class StaffParkingController implements Initializable {
     public void handleVehicle(ActionEvent event) throws URISyntaxException, IOException {
         try {
             String currentVehicle = ((String) vehicles.getValue());
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            Connection connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
             PreparedStatement available_statement = connection.prepareStatement("select available,total-available taken from parking where type=?");
             available_statement.setString(1,currentVehicle);
             ResultSet available = available_statement.executeQuery();

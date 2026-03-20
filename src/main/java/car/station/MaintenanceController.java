@@ -66,7 +66,7 @@ public class MaintenanceController implements Initializable {
         LocalDate selectedDate = datePicker.getValue();
         LocalDateTime selectedDatetime = selectedDate.atTime(hourSpinner.getValue(), minuteSpinner.getValue());
 
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+        try (Connection connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
              PreparedStatement appointmentStatement = connection.prepareStatement("insert into appointments values (?,?)")) {
             appointmentStatement.setInt(1, userId);
             appointmentStatement.setString(2, selectedDatetime.toString());

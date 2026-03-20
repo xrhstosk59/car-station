@@ -9,15 +9,24 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.fxml.FXMLLoader;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class FxmlSmokeTest {
 
+    private static Path tempDb;
+
     @BeforeAll
     static void setUpJavaFx() throws Exception {
+        tempDb = DatabaseTestSupport.createTempDatabaseCopy();
         UserIDSingleton.getInstance().setUser(3);
         FxTestSupport.initToolkit();
+    }
+
+    @AfterAll
+    static void tearDown() throws Exception {
+        DatabaseTestSupport.clearDatabaseOverride(tempDb);
     }
 
     @Test

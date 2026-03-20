@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
         Connection connection = null;
         try {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
             PreparedStatement statement = connection.prepareStatement("select rowid,role from users where username=? and password=?");
             statement.setString(1, user);
             statement.setString(2, password);

@@ -90,7 +90,7 @@ public class UserStartController implements Initializable {
                 return;
             }
             bell.getItems().clear();
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            Connection connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
             int user_id = UserIDSingleton.getInstance().getUser();
             PreparedStatement notificationStatement = connection.prepareStatement("select * from notifications where user_id=?");
             notificationStatement.setInt(1, user_id);

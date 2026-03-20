@@ -168,7 +168,7 @@ public class FuelAdminController implements Initializable {
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
             PreparedStatement statement = connection.prepareStatement("select * from fuel");
             ResultSet rs = statement.executeQuery();
             TextField[] amountTextFields = {petq, amoSimpq, amoq, superq};

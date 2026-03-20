@@ -182,7 +182,7 @@ public class ParkingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
         } catch (SQLException ex) {
             Logger.getLogger(ParkingController.class.getName()).log(Level.SEVERE, null, ex);
         }

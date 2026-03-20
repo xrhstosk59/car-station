@@ -88,7 +88,7 @@ public class CustomerProfileSettingsController implements Initializable {
         }
 
         try {
-            try (Connection connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            try (Connection connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
                  PreparedStatement usernameStatement = connection.prepareStatement("select username from users where rowid=?");
                  PreparedStatement infoStatement = connection.prepareStatement("select * from user_info where user_id=?")) {
                 usernameStatement.setInt(1, user_id);

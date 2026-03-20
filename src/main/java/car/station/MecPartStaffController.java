@@ -83,7 +83,7 @@ public class MecPartStaffController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:data/station.db");
+            connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl());
             Statement price_statement = connection.createStatement();
             ResultSet prices = price_statement.executeQuery("select type,retail_price from parts");
             while (prices.next()) {
