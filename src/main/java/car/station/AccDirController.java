@@ -30,7 +30,7 @@ public class AccDirController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    ComboBox accounts;
+    ComboBox<String> accounts;
     @FXML
     Button vehicles;
 

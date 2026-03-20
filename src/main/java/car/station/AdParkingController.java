@@ -12,7 +12,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +41,7 @@ public class AdParkingController implements Initializable {
     @FXML
     Label taken;
     @FXML
-    ComboBox vehicles;
+    ComboBox<String> vehicles;
 
     @FXML
     public void handleBack(ActionEvent event) throws URISyntaxException, IOException {
@@ -69,7 +68,7 @@ public class AdParkingController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
 }

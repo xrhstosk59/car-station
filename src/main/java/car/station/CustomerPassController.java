@@ -59,7 +59,6 @@ public class CustomerPassController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
     
 }

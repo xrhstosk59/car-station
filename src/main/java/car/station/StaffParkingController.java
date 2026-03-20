@@ -37,7 +37,7 @@ public class StaffParkingController implements Initializable {
     @FXML
     Label taken;
     @FXML
-    ComboBox vehicles;
+    ComboBox<String> vehicles;
 
     @FXML
     public void handleBack(ActionEvent event) throws URISyntaxException, IOException {
@@ -65,7 +65,7 @@ public class StaffParkingController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
     
 }
