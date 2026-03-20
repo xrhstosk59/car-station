@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@parking.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kachowwwwww.car.station.ParkingController">
+    <children>
+        <Button fx:id="back" layoutX="6.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="42.0" prefWidth="44.0">
+            <padding>
+                <Insets top="3.0" />
+            </padding>
+         <graphic>
+              <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@assets/fuel/fuelad/arrow.png" />
+                  </image>
+              </ImageView>
+         </graphic>
+        </Button>
+        <Label layoutX="288.0" layoutY="10.0" text="Στάθμευση" textFill="WHITE">
+            <font>
+                <Font name="DejaVu Serif Condensed Bold" size="33.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="vehicles" layoutY="56.0" onAction="#handleVehicle" prefHeight="35.0" prefWidth="140.0" promptText="Οχήματα">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Ι.Χ" />
+                    <String fx:value="Μοτοσικλέτα" />
+                    <String fx:value="Φορτηγό" />
+                  
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <VBox alignment="CENTER" layoutY="139.0" prefHeight="292.0" prefWidth="140.0" spacing="70.0">
+            <children>
+                <Label text="Ημερήσια" textFill="#365c89">
+                    <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label prefHeight="30.0" prefWidth="115.0" text="Εβδομαδιαία" textFill="#365c89">
+                    <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label prefHeight="30.0" prefWidth="79.0" text="Μηνιαία" textFill="#365c89">
+                    <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+        <VBox layoutX="150.0" layoutY="148.0" prefHeight="258.0" prefWidth="485.0" spacing="30.0">
+            <children>
+                <HBox prefHeight="57.0" prefWidth="485.0" spacing="10.0">
+                    <children>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="hour" alignment="CENTER" prefHeight="31.0" prefWidth="129.0" styleClass="lel" text="1 Ώρα " textAlignment="CENTER" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                            <toggleGroup>
+                                <ToggleGroup fx:id="parkingGroup" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box1" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="hour110" alignment="CENTER" prefHeight="45.0" prefWidth="129.0" styleClass="lel" text="1 έως 10 Ώρες &#10;" textAlignment="CENTER" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p1" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box2" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="hour24" alignment="CENTER" prefHeight="31.0" prefWidth="129.0" styleClass="lel" text="Όλο το 24ωρο" textAlignment="CENTER" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p2" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                    </children>
+                </HBox>
+                <HBox prefHeight="35.0" prefWidth="491.0" spacing="10.0">
+                    <children>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box3" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="week" alignment="CENTER" prefHeight="52.0" prefWidth="129.0" styleClass="lel" text="1 Εβδομάδα &#10;" textAlignment="CENTER" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p3" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box31" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="week12" alignment="CENTER" prefHeight="55.0" prefWidth="129.0" styleClass="lel" text="1 έως 2 και ½ &#10;Εβδομάδες&#10;" textAlignment="CENTER" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p4" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box32" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="week4" alignment="CENTER" prefHeight="31.0" prefWidth="129.0" styleClass="lel" text="4 Εβδομάδες" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p5" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                    </children>
+                </HBox>
+                <HBox prefHeight="35.0" prefWidth="491.0" spacing="10.0">
+                    <children>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box33" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="month" alignment="CENTER" prefHeight="31.0" prefWidth="129.0" styleClass="lel" text="1 Μήνας" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p6" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box331" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="month110" alignment="CENTER" prefHeight="31.0" prefWidth="129.0" styleClass="lel" text="1 έως 10 Μήνες" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p7" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                        <StackPane prefHeight="142.0" prefWidth="200.0" stylesheets="@parking.css">
+                            <children>
+                                <Rectangle id="box" fx:id="box332" arcHeight="15.0" arcWidth="30.0" fill="#d9d9d9" height="73.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="129.0" />
+                                <Label fx:id="month12" alignment="CENTER" prefHeight="31.0" prefWidth="129.0" styleClass="lel" text="12 Μήνες" textFill="#365c89">
+                                    <StackPane.margin>
+                                        <Insets bottom="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="p8" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" styleClass="p" textFill="WHITE">
+                                    <StackPane.margin>
+                                        <Insets top="40.0" />
+                                    </StackPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" toggleGroup="$parkingGroup">
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                        </RadioButton>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Line endX="614.0" fill="WHITE" layoutX="26.0" layoutY="56.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
+      <Button fx:id="confirm" onAction="#handleParking"  layoutX="327.0" layoutY="438.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" styleClass="bb" text="Επιβεβαίωση" textFill="#365c89">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="12.0" />
+         </font>
+      </Button>
+      <VBox alignment="TOP_CENTER" layoutX="303.0" layoutY="66.0" prefHeight="73.0" prefWidth="159.0" styleClass="ss">
+         <children>
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" styleClass="kk" text="Κενές &#10;Θέσεις" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="vacant" alignment="CENTER" prefHeight="43.0" prefWidth="157.0" text="&#10;" textAlignment="CENTER" textFill="#365c89">
+               <font>
+                  <Font name="DejaVu Serif Condensed Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

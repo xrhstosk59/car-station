@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane prefHeight="480.0" prefWidth="647.0" stylesheets="@mecpart.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kachowwwwww.car.station.MecPartController">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1270.0" prefWidth="721.0" stylesheets="@mecpart.css">
+            <children>
+                <Label layoutX="196.0" layoutY="8.0" text="Ανταλλακτικά" textFill="WHITE">
+                    <font>
+                        <Font name="DejaVu Serif Condensed Bold" size="33.0" />
+                    </font>
+                </Label>
+                <Line endX="540.0" layoutX="261.0" layoutY="48.0" startX="-264.0" stroke="WHITE" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#365c89" height="1217.0" layoutX="-10.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="156.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="43.0" layoutX="-4.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="156.0" />
+                <Label layoutX="7.0" layoutY="50.0" prefHeight="40.0" prefWidth="142.0" text="Κατηγορίες" textFill="#365c89">
+                    <font>
+                        <Font name="DejaVu Serif Condensed Bold" size="21.0" />
+                    </font>
+                </Label>
+                <VBox layoutX="175.0" layoutY="113.0" prefHeight="1026.0" prefWidth="460.0" spacing="30.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="119.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/filters/fuel_filter-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+
+                                        <TextField fx:id="Καυσίμου" onAction="#addtoMecOrder" prefHeight="35.0" prefWidth="85.0" promptText="Καυσίμου" styleClass="text" stylesheets="@mecpart.css" StackPane.alignment="BOTTOM_CENTER" />
+
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Αέρος" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Αέρος" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="57.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/filters/air_filter_icon_138983.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Λαδιού" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Λαδιού" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="54.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/filters/oil_filter.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets right="135.0" />
+                                    </HBox.margin>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Τακάκια" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Τακάκια" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="59.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/brakes/2888987.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Δίσκοι" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Δίσκοι" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="75.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/brakes/auto-disk-brake-icon-vector-20322864-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets right="135.0" />
+                                    </HBox.margin>
+                                </StackPane>
+                            </children>
+                            <padding>
+                                <Insets right="130.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Ρότορες" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Ρότορες" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="65.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                            <image>
+                                                <Image url="@assets/parts/icons/suspense/1000_F_172762960_PbHWO8hLE7kQwEw1ZtyfXdKWTOIyCHbS-removebg-preview.png" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Αμορτισέρ" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Αμορτισέρ" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="65.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/suspense/943487.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Ελατήρια" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Ελατήρια" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="71.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/suspense/car-shock-absorber-icon-outline-style-vector-23554295-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                            </image>
+                                        </ImageView>
+                                        <TextField fx:id="Στροφαλοφόροι" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Στροφαλοφόροι" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="9.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="59.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/suspense/car-spring-icon-outline-style-vector-24364254-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Μπαταρία" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Μπαταρία" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="64.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/electrical%20components/5102796.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Εκκεντροφόρος" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Εκκεντροφόρος" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="64.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/electrical%20components/images-removebg-preview-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-35.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Aναστολέας" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Aναστολέας" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/electrical%20components/outline-car-alternator-icon-isolated-black-simple-vector-28256460-removebg-preview-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                            </image>
+                                        </ImageView>
+                                        <TextField fx:id="Αλτενατέρ" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Αλτενατέρ" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="79.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/electrical%20components/sport-car-starter-icon-simple-style-vector-23554089-removebg-preview-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-15.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Τροχαλία" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Τροχαλία" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="61.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Engine%20and%20Exhaust%20Systems/5472267.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Καταλύτης" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Καταλύτης" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Engine%20and%20Exhaust%20Systems/car-catalytic-converter-isolated-icon-simple-vector-28229746-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Εξάτμιση" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Εξάτμιση" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="87.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Engine%20and%20Exhaust%20Systems/car-exhaust-system-icon-illustration-vector-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                            </image>
+                                        </ImageView>
+                                        <TextField fx:id="Ιμάντας" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Ιμάντας" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="74.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Engine%20and%20Exhaust%20Systems/car-timing-belt-icon-simple-style-vector-25194668-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Φώτα_Φρένου" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Φώτα Φρένου" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Lighting/1000_F_316182512_s00huuIMPKUwtYHfWvGlShwE4XRClyfT-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Φωτιστικό" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Φωτιστικό" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="65.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Lighting/20720.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Λάμπα_Προβολέων" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Λάμπα Προβολέων" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="8.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="61.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Lighting/car-light-bulb-icon-simple-style-vector-23554092-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets right="135.0" />
+                                    </HBox.margin>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Φίλτρo_κλιματιστικού" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Φίλτρo κλιματιστικού" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="7.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="112.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Air%20Conditioning/6687389.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Αντλία" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Αντλία" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="65.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Air%20Conditioning/896e2ba42327ed99b1a0a81c50d90990-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets left="10.0" top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Συμπιεστής" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Συμπιεστής" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="72.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Air%20Conditioning/air-compressor-icon-vector-29030434-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets right="135.0" />
+                                    </HBox.margin>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="441.0" spacing="50.0">
+                            <children>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Υγρό_Φρένων" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Υγρό Φρένων" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="11.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="81.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Consumables/3968884-200.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-25.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Λάδια_Κινητήρα" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Λάδια Κινητήρα" styleClass="text" StackPane.alignment="BOTTOM_CENTER">
+                                            <font>
+                                                <Font size="9.0" />
+                                            </font>
+                                        </TextField>
+                                        <ImageView fitHeight="64.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Consumables/engine-oil-icon-black-sign-with-editable-vector-35207286-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <StackPane prefHeight="102.0" prefWidth="85.0">
+                                    <children>
+                                        <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/partbg.png" />
+                                   
+                                            </image>
+                                
+                                        </ImageView>
+                                        <TextField fx:id="Αντιψυκτικό" onAction="#addtoMecOrder" prefHeight="34.0" prefWidth="85.0" promptText="Αντιψυκτικό" styleClass="text" StackPane.alignment="BOTTOM_CENTER" />
+                                        <ImageView fitHeight="74.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@assets/parts/icons/Consumables/istockphoto-1356779257-612x612-removebg-preview.png" />
+                                            </image>
+                                            <StackPane.margin>
+                                                <Insets top="-30.0" />
+                                            </StackPane.margin>
+                                        </ImageView>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets right="135.0" />
+                                    </HBox.margin>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" layoutX="-5.0" layoutY="-21.0" prefHeight="1309.0" prefWidth="156.0" spacing="80.0">
+                    <children>
+                        <Label prefHeight="32.0" prefWidth="72.0" text="Φίλτρα" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="-40.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label prefHeight="32.0" prefWidth="72.0" text="Φρένα" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label prefHeight="32.0" prefWidth="110.0" text="Αναρτήσεις" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label prefHeight="71.0" prefWidth="120.0" text="Ηλεκτρικά &#10;εξαρτήματα" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="66.0" prefWidth="204.0" text=" Κινητήρας και &#10;συστήματα &#10;εξάτμισης" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="-30.0" />
+                            </padding>
+                        </Label>
+                        <Label prefHeight="32.0" prefWidth="104.0" text="Φωτισμός" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="-30.0" />
+                            </padding>
+                        </Label>
+                        <Label prefHeight="32.0" prefWidth="136.0" text="Κλιματισμός" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="32.0" prefWidth="118.0" text="Αναλώσιμα" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="40.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label prefHeight="80.0" prefWidth="90.0" text="Συνολικό&#10;Ποσό" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="DejaVu Serif Condensed Bold" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-200.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="30.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </VBox>
+                <Button fx:id="back" layoutX="5.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="33.0" prefWidth="34.0">
+                    <padding>
+                        <Insets top="3.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@assets/fuel/arrow.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <TextField fx:id="price" layoutX="251.0" layoutY="1176.0" prefHeight="77.0" prefWidth="237.0" />
+                <Line endX="540.0" layoutX="186.0" layoutY="223.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="205.0" layoutY="358.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="215.0" layoutY="493.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="196.0" layoutY="624.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="215.0" layoutY="759.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="225.0" layoutY="894.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="225.0" layoutY="1022.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Line endX="540.0" layoutX="235.0" layoutY="1157.0" startX="-264.0" stroke="#d9d9d9" strokeWidth="4.0" />
+                <Button fx:id="confirm11" onAction="#handleOrder" layoutX="558.0" layoutY="1198.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" styleClass="bb" text="Επιβεβαίωση" textFill="WHITE">
+                    <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

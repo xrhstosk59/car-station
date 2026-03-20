@@ -1,0 +1,26 @@
+.root{
+ -fx-background-image: url("assets/mentainance/bg.png");
+ -fx-background-size: 720px 480px;
+ -fx-background-position: -35px;
+}
+
+#appoinment {
+    -fx-background-color: #365C89 
+}
+
+.button{
+    -fx-background-color:transparent 
+}
+
+
+.date-picker{
+    -fx-background-color: #ffffff;
+}
+
+.bb{
+    -fx-background-color:#365C89; 
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+}

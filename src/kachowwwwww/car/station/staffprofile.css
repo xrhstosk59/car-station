@@ -1,0 +1,22 @@
+.root{
+ -fx-background-image: url("assets/employee/bg.png");
+ -fx-background-size: 670px 440px;
+}
+.button{
+    -fx-background-color:transparent 
+}
+
+.bb{
+    -fx-background-color:#365C89; 
+        -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+    
+}
+
+.text-field{
+    -fx-background-color: #D9D9D9;
+}
+
+

@@ -1,0 +1,77 @@
+.root{
+ -fx-background-image: url("assets/parking/Parking.png");
+ -fx-background-size: 700px 480px;
+}
+.button{
+    -fx-background-color:transparent 
+}
+
+
+.text-field{
+    -fx-background-color: #D9D9D9;
+}
+
+.combo-box{
+     -fx-background-color: #ffffff;
+     -fx-border-color: #ffffff;
+     -fx-border-width:5px;
+}
+
+.lel{
+    -fx-background-color:#D9D9D9 ;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+}
+
+.p{
+    -fx-background-color:#365C89 ;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+}
+
+.kk{
+    -fx-background-color:#365C89 ;
+    -fx-background-radius: 10px 0 0 0;
+    
+}
+
+.nn{
+    -fx-background-color:#365C89 ;
+    -fx-background-radius: 0 10px 0 0;
+    
+}
+
+
+.bb{
+    -fx-background-color:#D9D9D9; 
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+}
+
+.ss{
+    -fx-background-color:#D9D9D9; 
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+}
+
+.vbox{
+    -fx-border-width: 2px;
+    -fx-border-color: #ffffff;
+     -fx-border-radius: 10px;
+
+}
+
+.vbox1{
+     -fx-border-width: 0 2px 0 0;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+
+}

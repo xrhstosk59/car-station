@@ -1,0 +1,32 @@
+.root{
+ -fx-background-image: url("assets/customer/profileset/bg.png");
+ -fx-background-size: 670px 480px;
+}
+.button{
+    -fx-background-color:transparent 
+}
+
+.text-field{
+    -fx-background-color: #D9D9D9;
+}
+
+.bb{
+    -fx-background-color:#365c87; 
+       -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #ffffff;
+}
+
+.lel{
+    -fx-background-color:#365c87;
+    -fx-underline : true;
+    -fx-text-decoration-color: #365c87;
+    -fx-text-underline-thickness: 20px;
+}
+
+.lel2{
+    -fx-underline : true;
+    -fx-text-decoration-color: #365c87;
+    -fx-text-decoration-thickness: 2px;
+}

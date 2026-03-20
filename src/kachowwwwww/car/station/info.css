@@ -1,0 +1,9 @@
+.root{
+ -fx-background-image: url("assets/customer/info/bg.png");
+ -fx-background-size: cover
+}
+
+.button{
+    -fx-background-color:transparent 
+}
+
