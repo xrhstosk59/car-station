@@ -31,8 +31,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -53,7 +51,7 @@ public class FuelController implements Initializable {
     private ToggleGroup fuelType;
 
     Double newLit;
-    public HashMap<String, Double> currentPrices = new HashMap();
+    public HashMap<String, Double> currentPrices = new HashMap<>();
     DecimalFormat format = new DecimalFormat("0");
     Connection connection;
 

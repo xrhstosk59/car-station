@@ -174,9 +174,9 @@ class UiFlowTest {
             Stage stage = loadStage("Maintenance.fxml");
             FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
 
-            ((DatePicker) loader.getNamespace().get("datePicker")).setValue(LocalDate.of(2030, 1, 15));
-            ((Spinner<Integer>) loader.getNamespace().get("hourSpinner")).getValueFactory().setValue(10);
-            ((Spinner<Integer>) loader.getNamespace().get("minuteSpinner")).getValueFactory().setValue(30);
+            namespaceSpinner(loader, "datePicker", DatePicker.class).setValue(LocalDate.of(2030, 1, 15));
+            integerSpinner(loader, "hourSpinner").getValueFactory().setValue(10);
+            integerSpinner(loader, "minuteSpinner").getValueFactory().setValue(30);
 
             ((Button) loader.getNamespace().get("appoinment")).fire();
         });
@@ -235,7 +235,7 @@ class UiFlowTest {
             FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
             ParkingController controller = loader.getController();
 
-            ComboBox<String> vehicles = (ComboBox<String>) loader.getNamespace().get("vehicles");
+            ComboBox<String> vehicles = stringComboBox(loader, "vehicles");
             vehicles.setValue("Ι.Χ");
             controller.handleVehicle(new ActionEvent(vehicles, vehicles));
 
@@ -279,7 +279,7 @@ class UiFlowTest {
             FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
             ParkingController controller = loader.getController();
 
-            ComboBox<String> vehicles = (ComboBox<String>) loader.getNamespace().get("vehicles");
+            ComboBox<String> vehicles = stringComboBox(loader, "vehicles");
             vehicles.setValue("Ι.Χ");
             controller.handleVehicle(new ActionEvent(vehicles, vehicles));
 
@@ -388,7 +388,7 @@ class UiFlowTest {
             FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
             AccDirController controller = loader.getController();
 
-            ComboBox<String> accounts = (ComboBox<String>) loader.getNamespace().get("accounts");
+            ComboBox<String> accounts = stringComboBox(loader, "accounts");
             Button vehicles = (Button) loader.getNamespace().get("vehicles");
             assertFalse(vehicles.isVisible());
 
@@ -606,6 +606,20 @@ class UiFlowTest {
         }
 
         return false;
+    }
+
+    private <T> T namespaceSpinner(FXMLLoader loader, String key, Class<T> type) {
+        return type.cast(loader.getNamespace().get(key));
+    }
+
+    @SuppressWarnings("unchecked")
+    private ComboBox<String> stringComboBox(FXMLLoader loader, String key) {
+        return (ComboBox<String>) loader.getNamespace().get(key);
+    }
+
+    @SuppressWarnings("unchecked")
+    private Spinner<Integer> integerSpinner(FXMLLoader loader, String key) {
+        return (Spinner<Integer>) loader.getNamespace().get(key);
     }
 
     private Node lookupByFxId(Node node, String fxId) {

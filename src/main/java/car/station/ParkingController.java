@@ -58,7 +58,7 @@ public class ParkingController implements Initializable {
     @FXML
     Label p8;
     @FXML
-    ComboBox vehicles;
+    ComboBox<String> vehicles;
     @FXML
     ToggleGroup parkingGroup;
     @FXML
@@ -66,7 +66,7 @@ public class ParkingController implements Initializable {
     Connection connection;
 
     DecimalFormat format = new DecimalFormat("0");
-    HashMap<Label, Double> labelPrices = new HashMap();
+    HashMap<Label, Double> labelPrices = new HashMap<>();
 
     @FXML
     public void handleBack(ActionEvent event) throws URISyntaxException, IOException {

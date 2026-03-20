@@ -16,6 +16,7 @@
         <sqlite.jdbc.version>3.51.2.0</sqlite.jdbc.version>
         <slf4j.version>2.0.17</slf4j.version>
         <junit.jupiter.version>5.14.2</junit.jupiter.version>
+        <native.access.arg>--enable-native-access=javafx.graphics,ALL-UNNAMED</native.access.arg>
     </properties>
 
     <dependencies>
@@ -69,7 +70,11 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>car.station.CarStationApp</mainClass>
+                    <mainClass>car.station/car.station.CarStationApp</mainClass>
+                    <runtimePathOption>MODULEPATH</runtimePathOption>
+                    <options>
+                        <option>${native.access.arg}</option>
+                    </options>
                 </configuration>
             </plugin>
             <plugin>
@@ -77,7 +82,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.4</version>
                 <configuration>
-                    <useModulePath>false</useModulePath>
+                    <argLine>${native.access.arg}</argLine>
+                    <useModulePath>true</useModulePath>
                 </configuration>
             </plugin>
         </plugins>
