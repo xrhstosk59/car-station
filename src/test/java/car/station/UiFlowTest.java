@@ -22,6 +22,7 @@ import javafx.scene.control.Labeled;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -492,6 +493,84 @@ class UiFlowTest {
         });
     }
 
+    @Test
+    void adminCanNavigateCoreScreensAndLogout() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("AdminStart.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((Button) loader.getNamespace().get("accdir")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Διαχείριση Λογαριασμών"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "back")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Διαχείριση\nΛογαριασμών"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "fuel")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Καύσιμα⛽"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "back")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Διαχείριση\nΛογαριασμών"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "logout")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Login"));
+        });
+    }
+
+    @Test
+    void staffCanNavigateCoreScreensAndLogout() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("StaffStart.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((Button) loader.getNamespace().get("prof")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Ρυθμίσεις Προφίλ"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "start1")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Στοιχεία\nΟχημάτων"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "vinfo")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Πληροφορίες Οχήματος"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "start1")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Στοιχεία\nΟχημάτων"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "logout")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Login"));
+        });
+    }
+
+    @Test
+    void customerCanNavigateCoreScreensAndLogout() throws Throwable {
+        UserIDSingleton.getInstance().setUser(3);
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("UserStart.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((Button) loader.getNamespace().get("prof")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Όνομα"));
+            assertEquals("Tomy", ((TextField) lookupByFxId(stage.getScene().getRoot(), "name")).getText());
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "start1")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Πληροφορίες"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "park")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Στάθμευση"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "back")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Πληροφορίες"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "info")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "ΓΡΑΜΜΕΣ ΕΠΙΚΟΙΝΩΝΙΑΣ"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "back")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Πληροφορίες"));
+
+            ((Button) lookupByFxId(stage.getScene().getRoot(), "logout")).fire();
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Login"));
+        });
+    }
+
     private Stage loadStage(String fxmlFile) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/car/station/" + fxmlFile));
         Parent root = loader.load();
@@ -519,6 +598,42 @@ class UiFlowTest {
             }
         }
 
+        if (node instanceof ScrollPane) {
+            Node content = ((ScrollPane) node).getContent();
+            if (content != null && sceneContainsText(content, text)) {
+                return true;
+            }
+        }
+
         return false;
+    }
+
+    private Node lookupByFxId(Node node, String fxId) {
+        assertNotNull(node);
+
+        if (fxId.equals(node.getId())) {
+            return node;
+        }
+
+        if (node instanceof Parent) {
+            for (Node child : ((Parent) node).getChildrenUnmodifiable()) {
+                Node match = lookupByFxId(child, fxId);
+                if (match != null) {
+                    return match;
+                }
+            }
+        }
+
+        if (node instanceof ScrollPane) {
+            Node content = ((ScrollPane) node).getContent();
+            if (content != null) {
+                Node match = lookupByFxId(content, fxId);
+                if (match != null) {
+                    return match;
+                }
+            }
+        }
+
+        return null;
     }
 }
