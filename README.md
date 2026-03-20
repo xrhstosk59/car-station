@@ -26,6 +26,7 @@ JavaFX desktop application for a car service station. The project covers custome
 - `src/main/resources/car/station`: FXML views, CSS, and assets
 - `src/test/java/car/station`: smoke, database, and UI flow tests
 - `data/station.db`: local SQLite database used by the app
+- `docs`: curated project and legacy documentation
 
 ## Demo Accounts
 
