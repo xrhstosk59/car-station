@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 //import javafx.stage.Stage;
@@ -55,8 +56,20 @@ public class RegisterController implements Initializable {
     }
 
     public void handleRegister(ActionEvent event) throws IOException {
+        if (uname.getText().trim().isEmpty() || pass.getText().trim().isEmpty()
+                || name.getText().trim().isEmpty() || lname.getText().trim().isEmpty()
+                || mail.getText().trim().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "All fields are required.");
+            return;
+        }
+
         try {
             try (Connection connection = DriverManager.getConnection(DatabaseConfig.jdbcUrl())) {
+                if (usernameExists(connection, uname.getText().trim())) {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Username already exists.");
+                    return;
+                }
+
                 int userId = getNextUserId(connection);
 
                 PreparedStatement loginStatement = connection.prepareStatement(
@@ -80,8 +93,17 @@ public class RegisterController implements Initializable {
                 ((Stage) ((Node) event.getSource()).getScene().getWindow()).setScene(scene);
             }
         } catch (SQLException ex) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Username already exists or data is invalid.");
             Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.show();
     }
 
     private int getNextUserId(Connection connection) throws SQLException {
@@ -103,6 +125,15 @@ public class RegisterController implements Initializable {
         }
 
         return Math.max(maxUserRowId, maxUserInfoId) + 1;
+    }
+
+    private boolean usernameExists(Connection connection, String username) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "select 1 from users where username=? limit 1")) {
+            statement.setString(1, username);
+            ResultSet rs = statement.executeQuery();
+            return rs.next();
+        }
     }
 
     @Override

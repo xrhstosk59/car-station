@@ -119,6 +119,51 @@ class UiFlowTest {
     }
 
     @Test
+    void duplicateRegisterDoesNotCreateSecondUser() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("register.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((TextField) loader.getNamespace().get("uname")).setText("Director");
+            ((TextField) loader.getNamespace().get("pass")).setText("AnotherPass1!");
+            ((TextField) loader.getNamespace().get("name")).setText("Duplicate");
+            ((TextField) loader.getNamespace().get("lname")).setText("Admin");
+            ((TextField) loader.getNamespace().get("mail")).setText("duplicate@example.com");
+
+            ((Button) loader.getNamespace().get("register")).fire();
+
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Register"));
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select count(*) count from users where username='Director'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(1, rs.getInt("count"));
+        }
+    }
+
+    @Test
+    void emptyRegisterFormDoesNotCreateUser() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("register.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            ((TextField) loader.getNamespace().get("uname")).setText("");
+            ((Button) loader.getNamespace().get("register")).fire();
+
+            assertTrue(sceneContainsText(stage.getScene().getRoot(), "Register"));
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select count(*) count from users")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(3, rs.getInt("count"));
+        }
+    }
+
+    @Test
     void maintenanceAppointmentIsStoredForCurrentUser() throws Throwable {
         UserIDSingleton.getInstance().setUser(3);
         String expectedDatetime = "2030-01-15T10:30";
@@ -221,6 +266,33 @@ class UiFlowTest {
     }
 
     @Test
+    void parkingWithNoAvailableSpotsDoesNotGoNegative() throws Throwable {
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement update = connection.prepareStatement("update parking set available=0 where type='Ι.Χ'")) {
+            update.executeUpdate();
+        }
+
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("Parking.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+            ParkingController controller = loader.getController();
+
+            ComboBox<String> vehicles = (ComboBox<String>) loader.getNamespace().get("vehicles");
+            vehicles.setValue("Ι.Χ");
+            controller.handleVehicle(new ActionEvent(vehicles, vehicles));
+
+            ((Button) loader.getNamespace().get("confirm")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select available from parking where type='Ι.Χ'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(0, rs.getInt("available"));
+        }
+    }
+
+    @Test
     void fuelOrderReducesFuelStock() throws Throwable {
         UserIDSingleton.getInstance().setUser(3);
 
@@ -284,6 +356,26 @@ class UiFlowTest {
             ResultSet rs = statement.executeQuery();
             assertTrue(rs.next());
             assertEquals(112.0, rs.getDouble("amount"));
+        }
+    }
+
+    @Test
+    void adminFuelOrderOverCapacityDoesNotIncreaseStock() throws Throwable {
+        FxTestSupport.runOnFxThread(() -> {
+            Stage stage = loadStage("FuelAdmin.fxml");
+            FXMLLoader loader = (FXMLLoader) stage.getProperties().get("loader");
+
+            TextField liters = (TextField) loader.getNamespace().get("superlit");
+            liters.setText("500");
+
+            ((Button) loader.getNamespace().get("accept")).fire();
+        });
+
+        try (Connection connection = DatabaseTestSupport.connect();
+             PreparedStatement statement = connection.prepareStatement("select amount from fuel where type='gas100'")) {
+            ResultSet rs = statement.executeQuery();
+            assertTrue(rs.next());
+            assertEquals(161.0, rs.getDouble("amount"));
         }
     }
 
