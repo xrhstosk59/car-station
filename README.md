@@ -1,6 +1,11 @@
 # Car Station
 
-JavaFX desktop application for a car service station. The project covers customer, staff, and admin flows on top of a local SQLite database and is now organized as a standard Maven project.
+University JavaFX semester project for a car service station. The application covers customer, staff, and admin flows on top of a local SQLite database, and this repository reflects the version I later improved and reorganized into a standard Maven project.
+
+## Project Background
+
+- Originally delivered as university coursework
+- Later refined with Maven-based project structure, test cleanup, and documentation cleanup
 
 ## Tech Stack
 
